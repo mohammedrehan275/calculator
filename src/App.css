@@ -1,0 +1,26 @@
+.App{
+  background-image: linear-gradient(to right, #76b6f5, #197ee4);
+  min-height: 100vh;
+  display: flex;
+}
+
+.App__container{
+  background-color: #ffffff;
+  width: 80%;
+  margin: 50px auto;
+  border-radius: 15px;
+}
+
+.App__header{
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+  flex-direction: row;
+}
+.app__dropdown{
+  margin-left: 20px;
+}
+
+.App__main{
+  margin: 50px;
+}

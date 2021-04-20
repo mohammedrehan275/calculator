@@ -1,0 +1,22 @@
+
+.subjectField__subject{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 20px;
+}
+
+.subjectField__subject__box{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 10px;
+}
+.subjectField__subject__boxL{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 2.5fr;
+    gap: 10px;
+}
+.subjectField__subject__lab{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 10px;
+}
