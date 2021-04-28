@@ -49,6 +49,7 @@ function App() {
     <div className="App">
       <div className="App__container">
         <div className="App__header">
+          <div className="App__header__cont">
           <Typography variant="subtitle1">Regulation</Typography>
           {/* Regulation Dropdown */}
           <FormControl className="app__dropdown">
@@ -62,6 +63,8 @@ function App() {
               ))}
             </Select>
           </FormControl>
+          </div>
+          <div className="App__header__cont">
           <Typography variant="subtitle1">Branch</Typography>
           {/* Branch Dropdown */}
           <FormControl className="app__dropdown">
@@ -75,6 +78,8 @@ function App() {
               ))}
             </Select>
           </FormControl>
+          </div>
+          <div className="App__header__cont">
           <Typography variant="subtitle1">Semester</Typography>
           {/* Semester Dropdown */}
           <FormControl className="app__dropdown">
@@ -88,6 +93,7 @@ function App() {
               ))}
             </Select>
           </FormControl>
+          </div>
         </div>
         <div className='App__main'>
           <SubjectField prop={subject} sem={Semester}></SubjectField>

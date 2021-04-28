@@ -13,9 +13,14 @@
 
 .App__header{
   display: flex;
-  justify-content: space-between;
+  gap: 60px;
   margin: 50px;
   flex-direction: row;
+}
+.App__header__cont{
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 .app__dropdown{
   margin-left: 20px;

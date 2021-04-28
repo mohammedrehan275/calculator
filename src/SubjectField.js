@@ -1,13 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import {TextField, } from '@material-ui/core';
+import {TextField, Button, IconButton, Tooltip } from '@material-ui/core';
 import {grade} from "./data";
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { purple } from '@material-ui/core/colors';
+import InfoIcon from '@material-ui/icons/Info';
 import './SubjectField.css'
+
+const ColorButton = withStyles((theme) => ({
+    root: {
+      color: theme.palette.getContrastText(purple[500]),
+      backgroundColor: purple[500],
+      '&:hover': {
+        backgroundColor: purple[700],
+      },
+    },
+}))(Button);
+
+const useStyles = makeStyles((theme) => ({
+    margin: {
+      margin: theme.spacing(1),
+    },
+}));
 
 function SubjectField(props) {
     const subjects = props.prop;
     const semester = props.sem;
     
     const [Grade, setGrade] = useState('');
+    const [Gpa, setGpa] = useState('');
 
     useEffect(() => {
         const change = async () => {
@@ -21,7 +41,10 @@ function SubjectField(props) {
             setGrade(subject);
         };
         change();
+        setGpa("")
     }, [subjects, semester])
+
+    const classes = useStyles();
 
     const handleChange = async (event) => {
         const { name, value } = event.target; 
@@ -51,9 +74,11 @@ function SubjectField(props) {
         var total = totCredits.reduce(function (sum, current) {
             return sum + current;
         }, 0);
+        
+        console.log(Grade)
 
         let Marks = [];
-        for (var item in Grade){
+        for (var item in Grade){     
             for (var items in credit){
                 if(item === items){
                     let pr = Grade[item] * credit[items]
@@ -66,8 +91,16 @@ function SubjectField(props) {
             return sum + current;
         }, 0);
 
-        const Gpa = totalMarks/total;
-        return Gpa;
+        var Gpa = totalMarks/total;
+        Gpa = Gpa.toFixed(2);
+        setGpa(Gpa);
+        for(var ite in Grade){
+            if(Grade[ite] === ""){
+                console.log("error")
+                alert("Select all subject grades")
+                setGpa("Select all subject grades")
+            }
+        }
     }
 
     return (
@@ -76,7 +109,7 @@ function SubjectField(props) {
                 subjects[semester].map((subItem) => 
                     <div className='subjectField__subject' key={subItem.subject}>
                         {/* Subject Field */}
-                        <TextField className='subjectField__subject__Name' key={subItem.subject} variant="outlined" color="secondary" label="Subject" value={subItem.subject} />
+                        <TextField className='subjectField__subject__Name' key={subItem.subject} variant="outlined" color="primary" label="Subject" value={subItem.subject} />
                         <div className={subItem.lab? "subjectField__subject__boxL" : "subjectField__subject__box"}>
                             {/* Subject Credits */}
                             <TextField
@@ -93,6 +126,7 @@ function SubjectField(props) {
                             />
                             {/* Subject Grade */}
                             <TextField
+                                defaultValue="Select Your Grade"
                                 className="subjectField__subject__grade"
                                 id="standard-select-grade-native1"
                                 select
@@ -155,7 +189,17 @@ function SubjectField(props) {
                     </div>
                 )
             }
-            <button onClick={calculator}>calculate</button>
+            <ColorButton onClick={calculator} variant="contained" color="primary" className={classes.margin} >
+                Calculate GPA 
+            </ColorButton>
+            <Tooltip title="Set to JNTUH University">
+                <IconButton color="primary" aria-label="Info">
+                    <InfoIcon />
+                </IconButton>
+            </Tooltip>
+            <TextField id="standard-basic" variant="outlined" label="Your Gpa" value={Gpa} />
+
+
         </div>
     );
 }
