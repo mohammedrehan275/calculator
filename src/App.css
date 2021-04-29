@@ -6,26 +6,40 @@
 
 .App__container{
   background-color: #ffffff;
-  width: 80%;
+  width: 90%;
   margin: 50px auto;
   border-radius: 15px;
 }
 
 .App__header{
-  display: flex;
-  gap: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 50px;
-  flex-direction: row;
 }
 .App__header__cont{
   display: flex;
   align-items: center;
-  gap: 25px;
+  justify-content: space-evenly;
 }
 .app__dropdown{
-  margin-left: 20px;
+  width: 90px;
 }
 
 .App__main{
   margin: 50px;
+}
+
+@media (max-width: 650px){
+  .App__main{
+    margin: 20px;
+  }
+  .App__header{
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .App__header__cont{
+    justify-content: space-between;
+  }
 }

@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(1),
     },
+    input: {
+        background: "rgb(232, 241, 250)"
+    }
 }));
 
 function SubjectField(props) {
@@ -109,7 +112,8 @@ function SubjectField(props) {
                 subjects[semester].map((subItem) => 
                     <div className='subjectField__subject' key={subItem.subject}>
                         {/* Subject Field */}
-                        <TextField className='subjectField__subject__Name' key={subItem.subject} variant="outlined" color="primary" label="Subject" value={subItem.subject} />
+                        <TextField InputProps={{ className: classes.input }}
+ key={subItem.subject} variant="outlined" color="primary" label="Subject" value={subItem.subject} />
                         <div className={subItem.lab? "subjectField__subject__boxL" : "subjectField__subject__box"}>
                             {/* Subject Credits */}
                             <TextField

@@ -20,3 +20,22 @@
     grid-template-columns: 1fr 1.5fr;
     gap: 10px;
 }
+
+@media (max-width: 768px){
+    .subjectField__subject__box{
+        grid-template-columns: 1.5fr 4fr;
+    }
+    .subjectField__subject__boxL{
+        grid-template-columns: 1.5fr 4fr;
+    }
+    .subjectField__subject__lab{
+        grid-template-columns: 1.5fr 4fr;
+        grid-column: auto / span 2;
+    }
+}
+@media (max-width: 500px){
+    .subjectField__subject{
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
